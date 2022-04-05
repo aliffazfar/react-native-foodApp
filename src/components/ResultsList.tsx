@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Text, View, StyleSheet, FlatList } from 'react-native'
+import ResultsDetail from './ResultsDetail'
 
 interface ResultProp {
   title: string
@@ -8,14 +9,14 @@ interface ResultProp {
 
 const ResultsList: FC<ResultProp> = ({ title, results }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.titleStyle}>{title}</Text>
       <FlatList
         horizontal
         data={results}
         keyExtractor={(results) => results.id}
         renderItem={({ item }) => {
-          return <Text>{item.name}</Text>
+          return <ResultsDetail result={item} />
         }}
       />
     </View>
@@ -26,6 +27,11 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginLeft: 15,
+    marginBottom: 5,
+  },
+  container: {
+    marginBottom: 10,
   },
 })
 

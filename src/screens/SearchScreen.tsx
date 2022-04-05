@@ -25,7 +25,7 @@ const SearchScreen: FC = () => {
       <Text>We have found {results.length} results</Text>
       <ResultsList results={filterResultsByPrice('$')} title='Cost Effective' />
       <ResultsList results={filterResultsByPrice('$$')} title='Bit Pricier' />
-      <ResultsList results={filterResultsByPrice('$$$')} title='Big Spender' />
+      <ResultsList results={filterResultsByPrice('$')} title='Big Spender' />
     </View>
   )
 }
