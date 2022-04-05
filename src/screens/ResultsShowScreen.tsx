@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, FlatList, Image } from 'react-native'
 import yelp from '../api/yelp'
 
 interface ResultProp {
@@ -19,13 +19,29 @@ const ResultsShowScreen: FC<ResultProp> = ({ navigation }) => {
     getResult(id)
   }, [])
 
+  if (!result) {
+    return null
+  }
+
   return (
     <View>
-      <Text>Rsults shows</Text>
+      <Text>{result.name}</Text>
+      <FlatList
+        data={result.photos}
+        keyExtractor={(photo) => photo}
+        renderItem={({ item }) => {
+          return <Image style={styles.imageStyle} source={{ uri: item }} />
+        }}
+      />
     </View>
   )
 }
 
 export default ResultsShowScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  imageStyle: {
+    height: 200,
+    width: 300,
+  },
+})
