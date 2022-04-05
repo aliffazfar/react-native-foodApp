@@ -25,7 +25,7 @@ const SearchScreen: FC = () => {
 
       <ScrollView>
         <ResultsList
-          results={filterResultsByPrice('$')}
+          results={filterResultsByPrice('$$')}
           title='Cost Effective'
         />
         <ResultsList results={filterResultsByPrice('$$')} title='Bit Pricier' />
